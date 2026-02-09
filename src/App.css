@@ -1,38 +1,134 @@
-.App {
+/* 🌙 Page background */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+}
+
+/* 📦 Main container */
+.container {
+  max-width: 520px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 🔤 Heading */
+h1 {
+  color: #ffffff;
+  margin-bottom: 25px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 🔍 Search box */
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-box input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.search-box button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #00aaff;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background: #0088cc;
+}
+
+/* ⏳ Status text */
+.status {
+  color: #ffffff;
+  margin: 15px 0;
+}
+
+.status.error {
+  color: #ff6b6b;
+}
+
+/* 👤 Results list */
+.results {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 🧑 User card (SMALL & CLEAN) */
+.user-card {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 12px;
+
+  padding: 10px 14px;
+  border-radius: 10px;
+
+  background: #ffffff;
+  text-decoration: none;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 👤 Avatar small */
+.user-card img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+/* 👤 Username clean blue */
+.user-card span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0366d6; /* GitHub blue */
+}
+
+/* ✨ Hover effect */
+.user-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 📄 Pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #00aaff;
   color: white;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.pagination button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pagination span {
+  color: white;
+  font-weight: 500;
 }
