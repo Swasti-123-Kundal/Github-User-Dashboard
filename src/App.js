@@ -1,8 +1,5 @@
-
-import './App.css';
-
-import { useEffect, useState } from "react";
-
+import "./App.css";
+import { useEffect, useState, useCallback } from "react";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -14,8 +11,12 @@ function App() {
 
   const PER_PAGE = 5;
 
-  const fetchUsers = async () => {
-    if (!query) return;
+  const fetchUsers = useCallback(async () => {
+    if (!query.trim()) {
+      setUsers([]);
+      setError("");
+      return;
+    }
 
     setLoading(true);
     setError("");
@@ -36,15 +37,14 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [query, page]);
 
   useEffect(() => {
     fetchUsers();
-  }, [page]);
+  }, [fetchUsers]);
 
   const handleSearch = () => {
     setPage(1);
-    fetchUsers();
   };
 
   return (
@@ -62,13 +62,13 @@ function App() {
         <button onClick={handleSearch}>Search</button>
       </div>
 
-      {/*  Loading */}
+      {/* Loading */}
       {loading && <p className="status">Loading...</p>}
 
-      {/*  Error */}
-      {error && <p className="status error">{error}</p>}
+      {/* Error (sirf jab real error ho) */}
+      {!loading && error && <p className="status error">{error}</p>}
 
-      {/*  Results */}
+      {/* Results */}
       <div className="results">
         {users.map((user) => (
           <a
@@ -84,19 +84,19 @@ function App() {
         ))}
       </div>
 
-      {/*  Pagination */}
+      {/* Pagination */}
       {users.length > 0 && (
         <div className="pagination">
           <button
             disabled={page === 1}
-            onClick={() => setPage(page - 1)}
+            onClick={() => setPage((p) => p - 1)}
           >
             Prev
           </button>
 
           <span>Page {page}</span>
 
-          <button onClick={() => setPage(page + 1)}>
+          <button onClick={() => setPage((p) => p + 1)}>
             Next
           </button>
         </div>
@@ -106,7 +106,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
