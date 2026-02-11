@@ -1,4 +1,5 @@
 # GitHub User Search Dashboard
+🚀 Live Demo: https://github-user-dashboard-5ahb.vercel.app
 
 ## 📌 Overview
 This is a React-based dashboard application that allows users to search for GitHub profiles using the GitHub public API.  
@@ -21,4 +22,4 @@ The app displays user profiles with pagination, loading states, and error handli
 ## ▶️ How to Run Locally
 1. Clone the repository:
    ```bash
-   git clone <your-github-repo-link>
+   git clone <https://github.com/Swasti-123-Kundal/Github-User-Dashboard>
